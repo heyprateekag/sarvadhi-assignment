@@ -1,7 +1,9 @@
 import styles from './signin.module.css';
-import {NavLink} from 'react-router-dom';
-import { useState } from 'react';
+import {NavLink, useNavigate} from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import {useDispatch} from 'react-redux';
+import { loginActions } from '../store/store';
 import 'react-toastify/dist/ReactToastify.css';
 
 const canUserSignIn = (credentials) => {
@@ -22,11 +24,17 @@ const canUserSignIn = (credentials) => {
 }
 
 const Signin = (props) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [emailIsValid, setEmailIsValid] = useState(false);
     const [emailIsTouched, setEmailIsTouched] = useState(false);
     const [password, setPassword] = useState('');
     // const [passwordIsValid, setPasswordIsValid] = useState(false);
+
+    useEffect(()=>{
+        localStorage.setItem('isLoggedIn', 'false');
+    }, []);
 
     const onEmailEnteredHandler = (event) => {
         setEmail(event.target.value);
@@ -52,8 +60,11 @@ const Signin = (props) => {
             }
             if(canUserSignIn(credentials)){
                 //login
+                dispatch(loginActions.login());
                 localStorage.setItem("loggedInUser", email.trim());
-                toast.success("Logged in successfully!")
+                localStorage.setItem("isLoggedIn", 'true');
+                toast.success("Logged in successfully!");
+                navigate('/dashboard',{replace: true});
             }else{
                 //show toast msg
                 toast.error("Credentials doesn't matched!");
