@@ -75,6 +75,8 @@ Step 1: npm i
 Step 2: npm i react-router-dom 
 Step 3: npm add react-toastify
 Step 4: npm i react-redux @reduxjs/toolkit
+Step 5: npm i react-table
+Step 6: npm start
 
 Instructions: 
 If email id is Mayur@sarvadhi.com then that user will be admin
