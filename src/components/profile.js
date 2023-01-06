@@ -1,8 +1,10 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginActions } from '../store/store';
+import { loginActions, userActions } from '../store/store';
 import styles from './profile.module.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const getUserDetails = () => {
     return JSON.parse(localStorage.getItem('loggedInUserDetails'));
@@ -35,6 +37,8 @@ const Profile = (props) => {
             }
         });
         localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        dispatch(userActions.setUsername(newName));
+        toast.success(`Name successfully changed to ${newName}`);
     }
 
     const nameChangedHandler = (event) => {
