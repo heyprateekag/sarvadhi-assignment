@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userActions } from '../store/store';
 import styles from './navbar.module.css';
 
 const Navbar = (props) => {
-
-    const [user, setUser] = useState({});
     
     const navigate = useNavigate();
 
@@ -23,7 +21,6 @@ const Navbar = (props) => {
         //to get the username of the user by matching from email id
         userDetails.forEach((element)=>{
             if(element.email?.trim() === user?.trim()){
-                setUser(element);
                 localStorage.setItem('loggedInUserDetails', JSON.stringify(element));
                 dispatch(userActions.setUser({
                     email: element.email,
