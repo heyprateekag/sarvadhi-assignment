@@ -7,7 +7,7 @@ import { ToastContainer} from 'react-toastify';
 import Navbar from './components/navbar';
 import React from 'react';
 import {useSelector} from 'react-redux';
-import LoginSlice from './store/loginSlice';
+import Profile from './components/profile';
 
 function App() {
   const loginState = useSelector(state=>state.login);
@@ -21,6 +21,7 @@ function App() {
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </div>
     </React.Fragment>

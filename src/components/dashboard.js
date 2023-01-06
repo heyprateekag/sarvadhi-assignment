@@ -1,4 +1,7 @@
 import { useState } from 'react';
+// import { ReactDOM } from 'react-dom';
+import ReactDOM from 'react-dom';
+import Modal from '../commons/modal';
 import styles from './dashboard.module.css';
 
 const Dashboard = (props) => {
@@ -19,19 +22,23 @@ const Dashboard = (props) => {
         address: 'Time square',
         rating: '4.8 stars'
     }];
+    const onSelectRestaurant = (name) => {
+        restaurants.forEach((res)=>{
+            if(res.name === name){
+                setRestaurantSelected(res);
+                toggleModalHandler();
+            }
+        })
+    }
+    const toggleModalHandler = (e) => {
+        setOpenDetail((prevValue)=>!prevValue);
+    }
     return <div className={styles['dashboard-container']}>
-        {restaurants.map((element, index)=><div className={styles['res-card']} key={index}>
+        {restaurants.map((element, index)=><div className={styles['res-card']} key={index} onClick={()=>{onSelectRestaurant(element.name)}}>
             <p>Name: {element.name}</p>
             <p>Rating: {element.rating}</p>
         </div>)}
-        {openDetail && <div>
-            <p>Name: {restaurantSelected.name}</p>
-            <p>Opening Time: {restaurantSelected.openingTime}</p>
-            <p>Closing Time: {restaurantSelected.closingTime}</p>
-            <p>Capacity: {restaurantSelected.seatingCapacity}</p>
-            <p>Address: {restaurantSelected.address}</p>
-            <p>Rating: {restaurantSelected.rating}</p>
-            </div>}
+        {openDetail && ReactDOM.createPortal(<Modal closeModal={toggleModalHandler} details={restaurantSelected}></Modal>, document.getElementById('modal-div'))}
     </div>
 }
 

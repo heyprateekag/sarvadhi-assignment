@@ -8,8 +8,14 @@
     color: red;
 }
 
-.navbar-container button{
+.profile-btn{
     position: absolute;
     right: 10px;
+    top: 10px;
+}
+
+.dashboard-btn{
+    position: absolute;
+    right: 100px;
     top: 10px;
 }
