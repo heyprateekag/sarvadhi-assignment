@@ -68,3 +68,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Step 1: npm i
+(if dependency doesn't download automatically)
+Step 2: npm i react-router-dom 
+Step 3: npm add react-toastify
+Step 4: npm i react-redux @reduxjs/toolkit
+
+Instructions: 
+If email id is Mayur@sarvadhi.com then that user will be admin
+
+Password validation: password between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character
+
+Same email id cannot be registered again and again
+
+
