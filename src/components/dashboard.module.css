@@ -23,3 +23,10 @@
     background-color: wheat;
     width: 100%;
 }
+
+.search-box{
+    position: absolute;
+    right: 10px;
+    top: 100px;
+    height: 30px;
+}
