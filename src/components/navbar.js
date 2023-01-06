@@ -33,7 +33,12 @@ const Navbar = (props) => {
 
     //if user goes to profile page and then want to navigate to dashboard then he/she can navigate
     const openDashboard = () => {
-        navigate('/dashboard');
+        if(localStorage.getItem('isAdmin') === 'true'){
+            navigate('/admin-dashboard');
+        }
+        else{
+            navigate('/dashboard');
+        }
     }
 
     //if user wants to go to his profile page

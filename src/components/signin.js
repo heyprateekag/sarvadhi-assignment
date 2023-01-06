@@ -73,7 +73,13 @@ const Signin = (props) => {
                 localStorage.setItem("loggedInUser", email.trim());
                 localStorage.setItem("isLoggedIn", 'true');
                 toast.success("Logged in successfully!");
-                navigate('/dashboard',{replace: true});
+                if(email.trim().toLowerCase() === 'mayur@sarvadhi.com'){
+                    localStorage.setItem('isAdmin', 'true');
+                    navigate('/admin-dashboard',{replace: true});
+                }else{
+                    localStorage.setItem('isAdmin', 'false');
+                    navigate('/dashboard',{replace: true});
+                }
             }else{
                 //show toast msg
                 toast.error("Credentials doesn't matched!");

@@ -9,6 +9,7 @@ import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Profile from './components/profile';
 import { loginActions } from './store/store';
+import AdminDashboard from './components/adminDashboard';
 const restaurants = [{
         name: 'Lalit',
         openingTime: '9 AM',
@@ -23,7 +24,15 @@ const restaurants = [{
         seatingCapacity: 60,
         address: 'Time square',
         rating: '4.8 stars'
-    }];
+    },
+  {
+    name: 'Ramanuja',
+    openingTime: '8 AM',
+    closingTime: '7 PM',
+    seatingCapacity: 70,
+    address: 'Surat',
+    rating: '4.9 stars'
+  }];
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +59,7 @@ function App() {
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/admin-dashboard' element={<AdminDashboard/>}/>
         <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </div>

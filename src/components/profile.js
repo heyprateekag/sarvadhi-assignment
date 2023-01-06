@@ -22,6 +22,7 @@ const Profile = (props) => {
     //this will get hit when user wants to logout
     const onLogout = () => {
         localStorage.setItem('isLoggedIn', 'false');
+        localStorage.setItem('isAdmin', 'false');
         dispatch(loginActions.logout());
         navigate('/signin', {replace: true});
     }
