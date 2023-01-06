@@ -18,6 +18,7 @@ const Navbar = (props) => {
         userDetails.forEach((element)=>{
             if(element.email?.trim() === user?.trim()){
                 setUser(element);
+                localStorage.setItem('loggedInUserDetails', JSON.stringify(element));
             }
         });
     }, []);

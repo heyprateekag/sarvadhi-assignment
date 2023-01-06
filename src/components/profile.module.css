@@ -1,0 +1,16 @@
+.profile-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-container button{
+    margin: 10px 0px;
+}
+
+.profile-container input, .profile-container button{
+    font-size: 1.4rem;
+}
+
+.profile-container button {
+    cursor: pointer;
+}
