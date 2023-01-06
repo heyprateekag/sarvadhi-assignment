@@ -1,0 +1,46 @@
+.signin-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.signin-form{
+    padding: 5rem 3rem;
+}
+
+.signin-label{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.signin-input{
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    padding: 10px 10px;
+}
+
+.signin-email-error{
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.signin-btn{
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 0px;
+    border-radius: 5px;
+    color: white;
+    background-color: #CB202D;
+    cursor: pointer;
+}
+
+.signup-link{
+    text-decoration: none;
+}
