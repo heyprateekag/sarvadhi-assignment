@@ -3,20 +3,28 @@ import {NavLink, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//signup page
 
+//to save user details in local storage
 function saveUserDetails(currentDetails){
+
+    //to get all the user details stored in local storage
     const userDetials = JSON.parse(localStorage.getItem('userDetails')) || [];
+
+    //to check whether the entered user already exists or not
     let userExists = false;
-    console.log(userDetials);
+
+    //to traverse through all the user details
     userDetials.forEach((user)=>{
         if(user.email === currentDetails.email){
             console.log(user.email + " " + currentDetails.email);
             userExists = true;
         }
     });
+
+    //if user doesn't exists then store that user's data in local storage
     if(!userExists){
         userDetials.push(currentDetails);
-        console.log(userDetials);
         localStorage.setItem("userDetails", JSON.stringify(userDetials));
         return true;
     }
@@ -134,19 +142,25 @@ const Signup = (props) => {
             <label htmlFor='name' className={styles['signup-label']}>Name<span className={styles['required']}>*</span></label>
             <input id='name' placeholder='Enter Name' type='text' className={styles['signup-input']} onChange={onNameEnteredHandler} onBlur={()=>{setNameIsTouched(true)}}/>
             {(!nameIsValid && nameIsTouched) && <div className={styles['signup-error']}>Enter valid Name</div>}
+
             <label htmlFor='mobile' className={styles['signup-label']}>Mobile<span className={styles['required']}>*</span></label>
             <input id="mobile" placeholder='Enter Number' type='number' className={styles['signup-input']} onChange={onMobileNumberEntered} onBlur={()=>{setMobileNumberIsTouched(true)}}/>
             {(!mobileNumberIsValid && mobileNumberIsTouched) && <div className={styles['signup-error']}>Enter valid mobile number</div>}
+
             <label htmlFor="email" className={styles['signup-label']}>Email<span className={styles['required']}>*</span></label>
             <input id="email" placeholder='Enter Email' type='email' className={styles['signup-input']} onChange={onEmailEnteredHandler} onBlur={()=>{setEmailIsTouched(true)}}/>
             {(!emailIsValid && emailIsTouched) && <div className={styles['signup-error']}>Enter valid Email</div>}
+
             <label htmlFor="password" className={styles['signup-label']}>Password<span className={styles['required']}>*</span></label>
             <input id="password" placeholder='Enter Password' type='password' className={styles['signup-input']} onChange={onPasswordEnteredHandler} onBlur={()=>{setPasswordIsTouched(true)}}/>
             {(!passwordIsValid && passwordIsTouched) && <div className={styles['signup-error']}>Enter valid password</div>}
+
             <label htmlFor="confirm-password" className={styles['signup-label']}>Confirm Password<span className={styles['required']}>*</span></label>
             <input id="confirm-password" placeholder='Enter Password' type='password' className={styles['signup-input']} onChange={onConfirmPasswordEnteredHandler}/>
             {!passwordsMatched && <div className={styles['signup-error']}>Passwords doesn't match</div>}
+
             <button className={styles['signup-btn']} type='submit'>Sign up</button>
+            
             <NavLink to='/signin' className={styles['signup-link']}>Signin?</NavLink>
         </form>
     </div>

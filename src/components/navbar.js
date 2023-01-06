@@ -1,12 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './navbar.module.css';
+
 const Navbar = (props) => {
+
     const [user, setUser] = useState({});
+    
     const navigate = useNavigate();
-    useEffect(()=>{
+
+    useEffect(()=>{//to get the email of the logged in user, which is getting set from signin page
         const user = localStorage.getItem('loggedInUser');
+
+        //to get the user details from local storage
         const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+        //to get the username of the user by matching from email id
         userDetails.forEach((element)=>{
             if(element.email?.trim() === user?.trim()){
                 setUser(element);
@@ -14,10 +22,12 @@ const Navbar = (props) => {
         });
     }, []);
 
+    //if user goes to profile page and then want to navigate to dashboard then he/she can navigate
     const openDashboard = () => {
         navigate('/dashboard');
     }
 
+    //if user wants to go to his profile page
     const openProfile = () => {
         navigate('/profile');
     }

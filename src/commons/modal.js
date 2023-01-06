@@ -1,7 +1,7 @@
 import styles from './modal.module.css';
 
 const Modal = (props) => {
-    console.log("modal");
+    //this modal is for restarant details
     return <div className={styles['overlay']} onClick={(e)=>props.closeModal(e)}>
         <div className={styles['modal']}>
             <p>Name: {props.details.name}</p>
